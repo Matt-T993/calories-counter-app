@@ -15,8 +15,6 @@ const mealSchema = new Schema({
     total_fats: Number,
     total_fiber: Number,
     total_sugar: Number,
-    createdAt: Date,
-    updatedAt: Date,
   },{timestamps: true});
 
   type Meal = InferSchemaType<typeof mealSchema>;
