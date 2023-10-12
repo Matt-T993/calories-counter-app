@@ -7,7 +7,7 @@ const mealSchema = new Schema({
       ref: "User",
     },
     meal_name: String,
-    date_and_time: Date,
+    date: Date,
     meal_type: String,
     total_calories: Number,
     total_carbohydrates: Number,

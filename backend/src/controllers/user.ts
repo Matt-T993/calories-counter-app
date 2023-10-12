@@ -64,7 +64,7 @@ export const deleteUser: RequestHandler = async(req, res) => {
 
 export const getUserMeal: RequestHandler = async (req, res) => {
     try {
-        const userId = req.user._id;
+        const userId = req.user.userId; // Access the user's ID from req.user
         
         const mealId = req.params.mealId;
 
@@ -85,8 +85,8 @@ export const getUserMeal: RequestHandler = async (req, res) => {
 
 export const getUserMealByMealType: RequestHandler = async (req, res) => {
     try {
-      const userId = req.user._id;
-      
+        const userId = req.params.userId; // Access the user's ID from req.user
+     
       // Get the mealType from the route parameter and convert it to lowercase
       const mealType = req.params.mealType.toLowerCase();
   
@@ -104,6 +104,7 @@ export const getUserMealByMealType: RequestHandler = async (req, res) => {
       res.status(500).json({ message: 'Internal Server Error' });
     }
   };
+
 
   
   

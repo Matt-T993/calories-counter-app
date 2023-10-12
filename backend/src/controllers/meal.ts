@@ -2,6 +2,9 @@ import { RequestHandler } from "express";
 import Meal from "../model/Meal"
 
 
+
+
+
 export const getAllMeals: RequestHandler = async(req, res) => {
     try{
         const Meals = await Meal.find().exec();
@@ -11,41 +14,47 @@ export const getAllMeals: RequestHandler = async(req, res) => {
     }
 }
 
-export const addMeals: RequestHandler = async(req, res) => {
-    try{
-        const {
-            user,
-            meal_name,
-            date_and_time,
-            meal_type,
-            total_calories, 
-            total_carbohydrates,
-            total_proteins,
-            total_fats,
-            total_fiber,
-            total_sugar,
-        
-        } = req.body;
-        const newMeal = new Meal({
-            user,
-            meal_name,
-            date_and_time,
-            meal_type,
-            total_calories, 
-            total_carbohydrates,
-            total_proteins,
-            total_fats,
-            total_fiber,
-            total_sugar,
-        
-        });
-        await newMeal.save();
-        res.status(201).json(newMeal);
+export const addMeals: RequestHandler = async (req, res) => {
+    try {
+        const userId = req.user.userId;
+      const {
+        meal_name,
+        date,
+        meal_type,
+        total_calories,
+        total_carbohydrates,
+        total_proteins,
+        total_fats,
+        total_fiber,
+        total_sugar,
+      } = req.body;
+  
+      // Log the request data for debugging
+      console.log('Request Data:', req.body);
+  
+      // Create a new meal instance
+      const newMeal = new Meal({
+        user: userId,
+        meal_name,
+        date,
+        meal_type,
+        total_calories,
+        total_carbohydrates,
+        total_proteins,
+        total_fats,
+        total_fiber,
+        total_sugar,
+      });
+  
+      await newMeal.save();
+  
+      res.status(201).json(newMeal);
     } catch (error) {
-        console.error("Error adding meal:", error);
-        res.status(500).json({ message: "Internal Server Error" });
-      }
-}
+      console.error("Error adding meal:", error);
+      res.status(500).json({ message: "Internal Server Error" });
+    }
+  };
+  
 
 export const updateMeals: RequestHandler = async(req, res) => {
     try {
@@ -58,6 +67,7 @@ export const updateMeals: RequestHandler = async(req, res) => {
         res.status(404).json({message: 'Meal not found'});
 
     }
+  
     res.status(200).json(updateMeal);
 
 }catch (error) {
@@ -85,11 +95,11 @@ export const deleteUser: RequestHandler = async(req, res) => {
 
 export const getUserMeals: RequestHandler = async (req, res) => {
     try {
-      const userId = req.user._id;
-      
-      const userMeals = await Meal.find({ user: userId });
+      const userId = req.params.id;
   
-
+      const userMeals = await Meal.find({ user: userId });
+    
+  
       res.status(200).json({ meals: userMeals });
     } catch (error) {
       console.error(error);
@@ -97,4 +107,6 @@ export const getUserMeals: RequestHandler = async (req, res) => {
     }
   };
 
+
+  
 
