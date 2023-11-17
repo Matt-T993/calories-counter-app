@@ -1,6 +1,16 @@
 import { RequestHandler } from "express";
 import Meal from "../model/Meal";
-import DailyLog from "../model/dailyLog";
+import DailyLog from "../model/DailyLog"; 
+
+
+
+function formatDate(date: Date) {
+  const day = String(date.getDate()).padStart(2, '0');
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const year = date.getFullYear();
+  return `${year}-${month}-${day}`;
+}
+
 
 export const getAllMeals: RequestHandler = async (req, res) => {
   try {
@@ -26,14 +36,13 @@ export const addMeals: RequestHandler = async (req, res) => {
       total_sugar,
     } = req.body;
 
-    // Log the request data for debugging
-    console.log("Request Data:", req.body);
+    const formattedDate = formatDate(new Date(date));
 
     // Create a new meal instance
     const newMeal = new Meal({
       user: userId,
       meal_name,
-      date,
+      date: formattedDate,
       meal_type,
       total_calories,
       total_carbohydrates,
@@ -48,14 +57,14 @@ export const addMeals: RequestHandler = async (req, res) => {
     // Check if there is an existing daily log for the same date
     let dailyLog = await DailyLog.findOne({
       user: userId,
-      date,
+      date: formattedDate,
     });
 
     if (!dailyLog) {
       // If daily log doesn't exist, create a new one
       dailyLog = new DailyLog({
         user: userId,
-        date,
+        date: formattedDate,
         total_calories_consumed: 0,
         total_carbohydrates_consumed: 0,
         total_proteins_consumed: 0,

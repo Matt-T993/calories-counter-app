@@ -1,6 +1,8 @@
 import { RequestHandler } from "express";
+import DailyLog from "../model/DailyLog";
 import User from "../model/User";
 import Meal from "../model/Meal"
+import Exercise from "../model/Exercise";
 
 export const getUsers: RequestHandler = async(req, res) => {
     try{
@@ -64,10 +66,9 @@ export const deleteUser: RequestHandler = async(req, res) => {
 
 export const getUserMeal: RequestHandler = async (req, res) => {
     try {
-        const userId = req.user.userId; // Access the user's ID from req.user
+        const userId = req.user.userId;
         
         const mealId = req.params.mealId;
-
         const meal = await Meal.findOne({user: userId, _id: mealId});
 
         if(!meal) {
@@ -85,12 +86,11 @@ export const getUserMeal: RequestHandler = async (req, res) => {
 
 export const getUserMealByMealType: RequestHandler = async (req, res) => {
     try {
-        const userId = req.params.userId; // Access the user's ID from req.user
-     
-      // Get the mealType from the route parameter and convert it to lowercase
+        const userId = req.user.userId;
+
       const mealType = req.params.mealType.toLowerCase();
   
-      // Use a case-insensitive query for meal_type
+
       const meal = await Meal.findOne({ user: userId, meal_type: { $regex: new RegExp(mealType, 'i') } });
   
       if (!meal) {
@@ -102,6 +102,49 @@ export const getUserMealByMealType: RequestHandler = async (req, res) => {
     } catch (error) {
       console.error('Error fetching meal:', error);
       res.status(500).json({ message: 'Internal Server Error' });
+    }
+  };
+
+  export const getUserInfo: RequestHandler = async (req, res) => {
+    try {
+      const userId = req.user.userId;
+      const date = req.params.date; 
+  
+      const [userInfo, dailyLog, exercises] = await Promise.all([
+        User.findOne({ _id: userId }),
+        DailyLog.findOne({ user: userId, date: date }),
+        Exercise.find({ user: userId, date: date }),
+      ]);
+  
+   
+      if (!userInfo || !dailyLog) {
+        const notFoundResource = !userInfo ? "User" : "DailyLog";
+        return res.status(404).json({ message: `${notFoundResource} not found` });
+      }
+  
+      const totalCaloriesBurned = exercises.reduce(
+        (total, exercise) => total + (exercise.calories_burned || 0),
+        0
+      );
+  
+
+      const response = {
+        user: {
+          weight: userInfo.weight,
+          goal: userInfo.daily_calorie_goal
+        },
+        dailyLog: {
+          remaining_calories: dailyLog.remaining_calories,
+        },
+        exercises: {
+          totalCaloriesBurned,
+        },
+      };
+  
+      res.status(200).json(response);
+    } catch (error) {
+      console.error("Error fetching user information", error);
+      res.status(500).json({ message: "Internal server error" });
     }
   };
 

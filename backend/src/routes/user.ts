@@ -8,8 +8,9 @@ userRouter.get("/", authenticateJWT, UserController.getUsers);
 userRouter.get("/:id", authenticateJWT, UserController.getUser);
 userRouter.put("/:id", authenticateJWT, UserController.updateUser);
 userRouter.delete("/:id", authenticateJWT, UserController.deleteUser);
-userRouter.get("/:userId/meal/:mealId", authenticateJWT, UserController.getUserMeal)
-userRouter.get("/:userId/meals/:mealType", authenticateJWT, UserController.getUserMealByMealType)
+userRouter.get("/meal/:mealId", authenticateJWT, UserController.getUserMeal)
+userRouter.get("/meals/:mealType", authenticateJWT, UserController.getUserMealByMealType)
+userRouter.get("/info/:date", authenticateJWT, UserController.getUserInfo)
 
 export default userRouter;
 

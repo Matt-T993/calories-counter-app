@@ -2,17 +2,13 @@ import { Request, Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
 import env from "../util/validateEnv"
 
-declare global {
-    namespace Express {
-      interface Request {
-        user: any
-      }
-    }
+declare module 'express-serve-static-core' {
+  interface Request {
+    user: any;
   }
+}  
+
   
-
-
-
 export const authenticateJWT = (
   req: Request,
   res: Response,
@@ -31,6 +27,7 @@ export const authenticateJWT = (
 
     // Now TypeScript knows that 'user' is a valid property on 'Request'
     req.user = decoded;
+   
     next();
   });
 };
