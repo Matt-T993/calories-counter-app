@@ -1,38 +1,22 @@
+/* App.css */
+
 .App {
+  margin: 0;
+  display: flex;
+  font-family: 'Arial', sans-serif; /* Add a default font-family */
+}
+.wrapper{
+  display: flex ;
+}
+.sidebar{
+  width: 15%;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Add the following line to make sure the sidebar and dashboard content fit the viewport */
+.App > div {
+  flex-grow: 1;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}

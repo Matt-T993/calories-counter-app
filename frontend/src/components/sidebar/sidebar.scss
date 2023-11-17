@@ -1,0 +1,20 @@
+.sidebar-container {
+  background-color: #343a40;
+  padding: 20px;
+  color: white;
+  min-height: 100vh; 
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow for separation */
+  font-size: 32px;
+}
+
+.nav-link {
+  color: white;
+  text-decoration: none;
+  padding: 10px 0;
+  margin: 20px;
+  transition: background-color 0.3s;
+}
+
+.nav-link:hover {
+  background-color: #495057;
+}

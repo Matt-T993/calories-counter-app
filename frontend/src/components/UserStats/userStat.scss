@@ -1,0 +1,46 @@
+// userStat.scss
+
+.userStatContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid #ced4da;
+  border-radius: 10px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  background-color: antiquewhite;
+
+}
+
+.userStatWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+}
+
+.userStatInfo {
+  width: 100%;
+
+}
+
+.userStatText {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px 0;
+  border: 1px solid #ced4da;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  padding: 5px;
+
+}
+
+.statValue {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.statLabel {
+  font-size: 14px;
+  color: #6c757d;
+}
