@@ -1,46 +1,60 @@
-import React, { useState } from "react";
-import ProgressBar from "../../components/progressBar/ProgressBar";
-import { Col, Container, Row } from "react-bootstrap";
-import MealTime from "../../components/mealTime/MealTime";
-import Exercise from "../../components/exercise/Exercise";
-import LineChart from "../../components/lineChart/LineChart";
-import UserStat from "../../components/UserStats/UserStat";
-import "./dashboard.scss"
+import React from 'react'
+
+import { GiWheat } from "react-icons/gi";
+import { CgDropOpacity } from "react-icons/cg";
+import { FaFish } from "react-icons/fa";
+
+import { FaBowlFood } from "react-icons/fa6";
+import  "./dashboard.css";
 
 
-
-
-const DashBoard = () => {
+const Dashboard = () => {
   return (
-    <Container className="dashboardContainer" >
-      <Row>
-        <Col xs={3}>
-          <UserStat/>
-      </Col>
-      <Col xs={6}>
-      <ProgressBar />
-      </Col>
-      <Col xs={3}>
-      <MealTime />
- 
-      </Col>
+    <>
+    <div className='header__container'>
+        <h1 className='title'>My Food Tracker</h1>
+        <div className='stats__content'>
+        <div className='stats'>
+        <div className='stat'>
+        <FaBowlFood className='stat__icon' />
+        <div className='stat__info'>
+        <h3 className='stat__info--title'>Total</h3>
+        <p className='stat__info-number'>0 cals</p>
+        </div>
+        </div>
+        <div className='stat'>
+        <GiWheat className='stat__icon' />
+        <div className='stat__info'>
+        <h3 className='stat__info--title'>Carbs</h3>
+        <p className='stat__info-number'>0 cals</p>
+        </div>
+        </div>
+        <div className='stat'>
+        <FaFish className='stat__icon' />
+        <div className='stat__info'>
+        <h3 className='stat__info--title'>Protein</h3>
+        <p className='stat__info-number'>0g</p>
+        </div>
+        </div>
+        <div className='stat'>
+        <CgDropOpacity className='stat__icon' />
+        <div className='stat__info'>
+        <h3 className='stat__info--title'>Fat</h3>
+        <p className='stat__info-number'>0g</p>
+        </div>
+        </div>       
+        </div>
+        <p className='stats__text'>Aim to stay within 1550 calorie sweet spot.</p>
+        </div>
 
-      </Row>
-      <Row>
-        <Col xs={3}>
-        <Exercise/>
-        </Col>
-        <Col xs={6}>
-        <LineChart/>
-        </Col>
-        <Col xs={3}>
-          <UserStat/>
-       
 
-      </Col>
-      </Row>
-    </Container>
-  );
-};
 
-export default DashBoard;
+    </div>
+    <div className='overlay'>
+        
+        </div>
+    </>
+  )
+}
+
+export default Dashboard
