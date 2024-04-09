@@ -6,13 +6,16 @@ import { FaFish } from "react-icons/fa";
 
 import { FaBowlFood } from "react-icons/fa6";
 import  "./dashboard.css";
+import ProgressBar  from "../../components/progressBar/ProgressBar";
 
 
 const Dashboard = () => {
+    const percentage: number = 66;
   return (
     <>
     <div className='header__container'>
         <h1 className='title'>My Food Tracker</h1>
+        <div className='wrapper'>
         <div className='stats__content'>
         <div className='stats'>
         <div className='stat'>
@@ -42,10 +45,15 @@ const Dashboard = () => {
         <h3 className='stat__info--title'>Fat</h3>
         <p className='stat__info-number'>0g</p>
         </div>
-        </div>       
+        </div>
+     
         </div>
         <p className='stats__text'>Aim to stay within 1550 calorie sweet spot.</p>
         </div>
+        <div className='stat'>
+        <ProgressBar  percentage={percentage} />
+            </div>  
+            </div>
 
 
 

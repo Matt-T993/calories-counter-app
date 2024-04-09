@@ -19,6 +19,11 @@
     z-index: 1;
   }
 
+  .wrapper{
+    display: flex;
+    align-items: center;
+  }
+
   .stats__content{
     display: flex;
     flex-direction: column;
