@@ -7,6 +7,9 @@ import { FaFish } from "react-icons/fa";
 import { FaBowlFood } from "react-icons/fa6";
 import  "./dashboard.css";
 import ProgressBar  from "../../components/progressBar/ProgressBar";
+import Datepicker from '../../components/datepicker/Datepicker';
+import DashboardCard from '../../components/card/DashboardCard';
+import MealCard from '../../components/card/MealCard';
 
 
 const Dashboard = () => {
@@ -54,10 +57,20 @@ const Dashboard = () => {
         <ProgressBar  percentage={percentage} />
             </div>  
             </div>
-
-
-
     </div>
+    <div className='datepicker'>
+    <Datepicker/>
+    </div> 
+    <div className='cards'>
+    <DashboardCard/>
+    </div>
+    <div className='cards'>
+    <MealCard/>
+    </div>
+    
+
+
+   
     <div className='overlay'>
         
         </div>
