@@ -77,6 +77,22 @@
   .card{
 
   }
+ 
+  .card__content--topSection{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+
+
+  .card__content--info{
+    display: flex;
+    flex-direction: column;
+    padding: 0 16px;
+  }
+  .card__content--icon{
+   font-size: 36px;
+  }
 
   .card__info{
       width: calc((100% / 4));
@@ -86,6 +102,40 @@
   .meal-card__info{
     width: calc((100% / 2));
     padding: 16px;
+}
+
+.card__content--bottomSection{
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  margin: 0 auto;
+
+  
+}
+
+.bottomSection__stats{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  
+
+
+  
+}
+.bottomSection__icon{
+  font-size: 42px;
+  
+
+}
+
+.bottomSection__info{
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+
+  
+
 
 }
 
