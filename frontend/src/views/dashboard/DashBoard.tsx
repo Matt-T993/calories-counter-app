@@ -11,7 +11,7 @@ import Datepicker from "../../components/datepicker/Datepicker";
 import DashboardCard from "../../components/card/DashboardCard";
 import MealCard from "../../components/card/MealCard";
 
-const Dashboard = () => {
+const DashBoard = () => {
   const percentage: number = 66;
   return (
     <>
@@ -73,4 +73,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default DashBoard;

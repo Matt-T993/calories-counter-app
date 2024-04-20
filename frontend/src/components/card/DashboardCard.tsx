@@ -1,10 +1,9 @@
 import React from "react";
 
 import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
-import Button from "@mui/material/Button";
+
 import Typography from "@mui/material/Typography";
 import BreakfastImage from "../../assets/images/breakfast.png";
 import { Box, Divider } from "@mui/material";
@@ -30,12 +29,8 @@ const DashboardCard = () => {
                 <Typography variant="h5" color="text.secondary" gutterBottom>
                   Breakfast
                 </Typography>
-                <Typography variant="body1" >
-                  0 cals
-                </Typography>
-                <Typography variant="body1" >
-                  6 items
-                </Typography>
+                <Typography variant="body1">0 cals</Typography>
+                <Typography variant="body1">6 items</Typography>
               </Box>
             </Box>
             <Divider>
@@ -43,36 +38,24 @@ const DashboardCard = () => {
             </Divider>
             <Box component="div" className="card__content--bottomSection">
               <Box component="div" className="bottomSection__stats">
-                <FaFish className="bottomSection__icon"  />
+                <FaFish className="bottomSection__icon" />
                 <Box component="div" className="bottomSection__info">
-                  <Typography variant="body1" >
-                    Carbs
-                  </Typography>
-                  <Typography variant="body1" >
-                    0g
-                  </Typography>
+                  <Typography variant="body1">Carbs</Typography>
+                  <Typography variant="body1">0g</Typography>
                 </Box>
               </Box>
               <Box component="div" className="bottomSection__stats">
-                <GiWheat className="bottomSection__icon"/>
+                <GiWheat className="bottomSection__icon" />
                 <Box component="div" className="bottomSection__info">
-                  <Typography variant="body1" >
-                    Protein
-                  </Typography>
-                  <Typography variant="body1" >
-                    0g
-                  </Typography>
+                  <Typography variant="body1">Protein</Typography>
+                  <Typography variant="body1">0g</Typography>
                 </Box>
               </Box>
               <Box component="div" className="bottomSection__stats">
                 <CgDropOpacity className="bottomSection__icon" />
                 <Box component="div" className="bottomSection__info">
-                  <Typography variant="body1" >
-                    Fat
-                  </Typography>
-                  <Typography variant="body1" >
-                    0g
-                  </Typography>
+                  <Typography variant="body1">Fat</Typography>
+                  <Typography variant="body1">0g</Typography>
                 </Box>
               </Box>
             </Box>
