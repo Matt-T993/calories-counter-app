@@ -9,9 +9,12 @@ import MealsImage from "../../assets/images/meals.png";
 import { Box, CardMedia } from "@mui/material";
 import { MdArrowForwardIos } from "react-icons/md";
 
+
+
 const MealCard = () => {
   return (
     <>
+    
       <div className="meal-card__info">
         <Card className="card" sx={{ height: 100, backgroundColor: "#B2DFDB" }}>
           <CardContent className="mealCard__content">
